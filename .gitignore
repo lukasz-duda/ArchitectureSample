@@ -1,1 +1,6 @@
-.idea/
+*.swp
+
+vendor/
+.project
+.buildpath
+.settings/
