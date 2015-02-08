@@ -1,4 +1,14 @@
-<?php $baseUrl = 'http://localhost/ArchitectureSample/Web/'?>
+<?php
+$protocol = isset ( $_SERVER ['HTTPS'] ) ? 'https' : 'http';
+$port = $_SERVER ['SERVER_PORT'];
+$defualtPort = ($port == 80 || $port == 443);
+$urlPort = $defualtPort ? '' : ':' . $port;
+$baseUrl = $protocol . '://' . $_SERVER ['SERVER_NAME'] . $urlPort . '/Web/';
+?>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="<?= $baseUrl ?>Views/Shared/view.css"></link>
 <script
 	src="<?= $baseUrl ?>Libraries/Dependencies/JQuery/jquery-2.1.3.js"></script>
 <script
