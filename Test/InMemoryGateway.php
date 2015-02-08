@@ -10,7 +10,7 @@ class InMemoryGateway {
 
 	function save($entity) {
 		if ($entity->id == null)
-			$entity->id = Guid::next ();
+			$entity->id = Guid::create ();
 		$clone = $entity->makeClone ();
 		$this->entities [] = $clone;
 		return $entity->makeClone ();

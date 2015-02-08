@@ -7,10 +7,11 @@ class Responder {
 	public $messages = array ();
 
 	function __call($name, $args) {
-		$firstArgument = ($args) ? $args[0] : null;
+		$firstArgument = $args ? $args [0] : null;
+		
 		$action = array (
 				'name' => $name,
-				'args' => $firstArgument
+				'args' => $firstArgument 
 		);
 		
 		$this->actions [] = $action;
