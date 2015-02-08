@@ -2,10 +2,9 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Application\Responder;
-use Test\Configuration\DemoData;
 use Test\Configuration\DemoUseCaseFactory;
 
-DemoData::setUp ();
+DemoUseCaseFactory::setUp ();
 
 $request = json_decode ( file_get_contents ( 'php://input' ) );
 

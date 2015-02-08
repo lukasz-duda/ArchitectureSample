@@ -1,13 +1,13 @@
 <?php
 
-namespace Test\LogIn;
+namespace Test\SecurityUseCases;
 
 use Application\Responder;
 
 class LogInResponderSpy extends Responder {
 	public $showHomeViewCalled = false;
 
-	public function showHomeView() {
+	function showHomeView() {
 		$this->showHomeViewCalled = true;
 	}
 }

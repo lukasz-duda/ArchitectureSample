@@ -5,10 +5,12 @@ function LoginViewModel() {
 	var me = this;
 
 	me.userName = ko.observable();
+	me.password = ko.observable();
 
 	me.logIn = function() {
 		var args = {
-			userName : me.userName()
+			userName : me.userName(),
+			password : me.password()
 		};
 		me.executeUseCase('LogIn', 'logIn', args);
 	};

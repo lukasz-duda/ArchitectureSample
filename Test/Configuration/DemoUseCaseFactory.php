@@ -2,30 +2,39 @@
 
 namespace Test\Configuration;
 
-use Application\UserManagement\LogIn\LogInUseCase;
+use Application\SecurityUseCases\LogInUseCase;
 use Test\UserGateways\InMemoryUserGateway;
 use Application\UserEntities\User;
+use Application\SecurityUseCases\PasswordHash;
 
 class DemoUseCaseFactory {
-	public static $userGateway;
+	static $userGateway;
+	static $passwordHash;
+	static $setupCompleted = false;
+
+	static function setUp() {
+		if (DemoUseCaseFactory::$setupCompleted)
+			return;
+		
+		DemoUseCaseFactory::$userGateway = new InMemoryUserGateway ();
+		DemoUseCaseFactory::$passwordHash = new PasswordHash ();
+		DemoData::setUp ();
+		DemoUseCaseFactory::$setupCompleted = true;
+	}
 
 	function makeUseCase($useCaseName) {
 		$useCaseFamilies = array (
-				'Application\UserManagement' 
+				'Application\SecurityUseCases' 
 		);
 		
 		foreach ( $useCaseFamilies as $useCaseFamily ) {
-			$useCaseNamespace = $useCaseFamily . '\\' . $useCaseName;
-			$useCaseClassName = $useCaseNamespace . '\\' . $useCaseName . 'UseCase';
+			$useCaseClassName = $useCaseFamily . '\\' . $useCaseName . 'UseCase';
 			if (class_exists ( $useCaseClassName ))
 				$useCase = new $useCaseClassName ();
 		}
 		
-		$useCase->userGateway = $this->makeUserGateway ();
+		$useCase->userGateway = DemoUseCaseFactory::$userGateway;
+		$useCase->passwordHash = DemoUseCaseFactory::$passwordHash;
 		return $useCase;
-	}
-
-	public function makeUserGateway() {
-		return DemoUseCaseFactory::$userGateway;
 	}
 }

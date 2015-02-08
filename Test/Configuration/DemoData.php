@@ -3,27 +3,17 @@
 namespace Test\Configuration;
 
 use Application\UserEntities\User;
-use Test\UserGateways\InMemoryUserGateway;
 
 class DemoData {
-	public static $setupCompleted = false;
 
-	public static function setUp() {
-		if (DemoData::$setupCompleted)
-			return;
-		
+	static function setUp() {
 		DemoData::addUsers ();
-		
-		DemoData::$setupCompleted = true;
 	}
 
-	private static function addUsers() {
-		$userGateway = new InMemoryUserGateway ();
-		
+	static function addUsers() {
 		$user = new User ();
-		$user->name = "UserName";
-		$userGateway->save ( $user );
-		
-		DemoUseCaseFactory::$userGateway = $userGateway;
+		$user->name = 'User';
+		$user->passwordHash = password_hash ( 'Password', PASSWORD_DEFAULT );
+		DemoUseCaseFactory::$userGateway->save ( $user );
 	}
 }

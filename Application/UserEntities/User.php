@@ -6,4 +6,5 @@ use Application\Entity;
 
 class User extends Entity {
 	public $name;
+	public $passwordHash;
 }
