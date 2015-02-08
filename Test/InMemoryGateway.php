@@ -2,30 +2,37 @@
 
 namespace Test;
 
+use Test\Guid;
 use Application\Entity;
 
 class InMemoryGateway {
-	protected $entities = array ();
+	private $entities = array ();
 
-	public function save($entity) {
-		if ($entity->getId () == null)
-			$entity->setId ( Guid::next () );
+	function save($entity) {
+		if ($entity->id == null)
+			$entity->id = Guid::next ();
 		$clone = $entity->makeClone ();
 		$this->entities [] = $clone;
 		return $entity->makeClone ();
 	}
 
-	public function getEntities() {
+	function getEntities() {
 		$clonedEntities = array ();
 		foreach ( $this->entities as $entity )
 			$clonedEntities [] = $entity->makeClone ();
 		return $clonedEntities;
 	}
 
-	public function delete($entity) {
+	function delete($entity) {
 		for($i = 0; $i < count ( $this->entities ); $i ++) {
-			if ($entity->getId () == $this->entities [$i]->getId ())
+			if ($entity->isSame ( $this->entities [$i] ))
 				unset ( $this->entities [$i] );
 		}
+	}
+
+	function get($id) {
+		foreach ( $this->getEntities () as $entity )
+			if ($entity->id == $id)
+				return $entity;
 	}
 }

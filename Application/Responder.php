@@ -6,16 +6,17 @@ class Responder {
 	public $actions = array ();
 	public $messages = array ();
 
-	public function __call($name, $args) {
+	function __call($name, $args) {
+		$firstArgument = ($args) ? $args[0] : null;
 		$action = array (
 				'name' => $name,
-				'args' => $args [0] 
+				'args' => $firstArgument
 		);
 		
 		$this->actions [] = $action;
 	}
 
-	public function showWarning($text) {
+	function showWarning($text) {
 		$message = array (
 				'text' => $text 
 		);

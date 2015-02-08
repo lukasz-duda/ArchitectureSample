@@ -6,44 +6,44 @@ use Application\Entity;
 
 class EntityTest extends TestCase {
 
-	public function testTwoDifferentEntitiesAreNotSame() {
+	function testTwoDifferentEntitiesAreNotSame() {
 		$entity1 = new Entity ();
 		$entity2 = new Entity ();
-		$entity1->setId ( "entity1Id" );
-		$entity2->setId ( "entity2Id" );
+		$entity1->id = "entity1Id";
+		$entity2->id = "entity2Id";
 		$this->assertFalse ( $entity1->isSame ( $entity2 ) );
 	}
 
-	public function testOneEntityIsTheSameAsItself() {
+	function testOneEntityIsTheSameAsItself() {
 		$entity1 = new Entity ();
-		$entity1->setId ( "entity1Id" );
+		$entity1->id = "entity1Id";
 		$this->assertTrue ( $entity1->isSame ( $entity1 ) );
 	}
 
-	public function testEntitiesWithTheSameIdAreTheSame() {
+	function testEntitiesWithTheSameIdAreTheSame() {
 		$entity1 = new Entity ();
 		$entity2 = new Entity ();
-		$entity1->setId ( "entity1Id" );
-		$entity2->setId ( "entity1Id" );
+		$entity1->id = "entity1Id";
+		$entity2->id = "entity1Id";
 		$this->assertTrue ( $entity1->isSame ( $entity2 ) );
 	}
 
-	public function testEntitiesWithNullIdsAreNeverSame() {
+	function testEntitiesWithNullIdsAreNeverSame() {
 		$entity1 = new Entity ();
 		$entity2 = new Entity ();
 		$this->assertFalse ( $entity1->isSame ( $entity2 ) );
 	}
 
-	public function testClonedEntityIsSameAsOriginal() {
+	function testClonedEntityIsSameAsOriginal() {
 		$entity1 = new Entity ();
-		$entity1->setId ( "entity1Id" );
+		$entity1->id = "entity1Id";
 		$entity2 = $entity1->makeClone ();
 		$this->assertTrue ( $entity1->isSame ( $entity2 ) );
 	}
 
-	public function testClonedEntitiesRefersToDifferentObject() {
+	function testClonedEntitiesRefersToDifferentObject() {
 		$entity1 = new Entity ();
-		$entity1->setId ( "entity1Id" );
+		$entity1->id = "entity1Id";
 		$entity2 = $entity1->makeClone ();
 		$this->assertNotSame ( $entity1, $entity2 );
 	}

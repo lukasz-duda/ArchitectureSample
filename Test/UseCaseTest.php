@@ -9,7 +9,7 @@ class TestUseCase extends UseCase {
 	public $calledRequest;
 	public $calledResponder;
 
-	public function transaction($request, $responder) {
+	function transaction($request, $responder) {
 		$this->calledRequest = $request;
 		$this->calledResponder = $responder;
 	}
@@ -17,11 +17,11 @@ class TestUseCase extends UseCase {
 class UseCaseTest extends TestCase {
 	private $sut;
 
-	public function setUp() {
+	function setUp() {
 		$this->sut = new TestUseCase ();
 	}
 
-	public function testExecutesTransaction() {
+	function testExecutesTransaction() {
 		$expectedRequest = 'request';
 		$expectedResponder = 'responder';
 		

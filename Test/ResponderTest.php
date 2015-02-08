@@ -7,11 +7,11 @@ use Application\Responder;
 class ResponderTest extends TestCase {
 	private $sut;
 
-	public function setUp() {
+	function setUp() {
 		$this->sut = new Responder ();
 	}
 
-	public function testRecordsFunctionCalls() {
+	function testRecordsFunctionCalls() {
 		$expectedArgument1 = array (
 				'argName1' => 'argValue1' 
 		);
@@ -29,7 +29,7 @@ class ResponderTest extends TestCase {
 		$this->assertEquals ( $expectedArgument2, $this->sut->actions [1] ['args'] );
 	}
 
-	public function testShowWarning_updatesActionsAndMessages() {
+	function testShowWarning_updatesActionsAndMessages() {
 		$expectedText = 'message';
 		
 		$this->sut->showWarning ( $expectedText );
