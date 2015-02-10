@@ -2,11 +2,12 @@
 
 namespace Test\SecurityUseCases;
 
-use Application\SecurityUseCases\LogInUseCase;
-use Application\UserEntities\User;
 use Test\TestCase;
-use Test\UserGateways\InMemoryUserGateway;
+use Application\SecurityUseCases\LogInUseCase;
 use Test\SecurityUseCases\LogInResponderSpy;
+use Test\UserGateways\InMemoryUserGateway;
+use Test\UserGateways\PasswordHashStub;
+use Application\UserEntities\User;
 
 class LogInUseCaseTest extends TestCase {
 	private $sut;

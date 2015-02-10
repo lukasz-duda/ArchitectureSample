@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\SecurityUseCases;
+namespace Test\UserGateways;
 
 class PasswordHashStub {
 	private $valid = true;

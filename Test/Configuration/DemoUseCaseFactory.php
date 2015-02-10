@@ -4,8 +4,7 @@ namespace Test\Configuration;
 
 use Application\SecurityUseCases\LogInUseCase;
 use Test\UserGateways\InMemoryUserGateway;
-use Application\UserEntities\User;
-use Application\SecurityUseCases\PasswordHash;
+use Application\UserGateways\PasswordHash;
 
 class DemoUseCaseFactory {
 	static $userGateway;

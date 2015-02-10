@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\SecurityUseCases;
+namespace Application\UserGateways;
 
 class PasswordHash {
 
