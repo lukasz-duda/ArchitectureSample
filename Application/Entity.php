@@ -3,7 +3,15 @@
 namespace Application;
 
 class Entity {
-	public $id;
+	private $id;
+
+	function getId() {
+		return $this->id;
+	}
+
+	function setId($id) {
+		$this->id = $id;
+	}
 
 	function isSame($entity) {
 		return $this->id != null && $this->id == $entity->id;

@@ -9,8 +9,8 @@ class InMemoryGateway {
 	private $entities = array ();
 
 	function save($entity) {
-		if ($entity->id == null)
-			$entity->id = Guid::create ();
+		if ($entity->getId () == null)
+			$entity->setId ( Guid::create () );
 		$clone = $entity->makeClone ();
 		$this->entities [] = $clone;
 		return $entity->makeClone ();
@@ -32,7 +32,7 @@ class InMemoryGateway {
 
 	function get($id) {
 		foreach ( $this->getEntities () as $entity )
-			if ($entity->id == $id)
+			if ($entity->getId () == $id)
 				return $entity;
 	}
 }

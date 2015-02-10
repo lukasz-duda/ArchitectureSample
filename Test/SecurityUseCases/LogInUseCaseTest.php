@@ -27,7 +27,7 @@ class LogInUseCaseTest extends TestCase {
 
 	function setUpUser() {
 		$user = new User ();
-		$user->name = 'UserName';
+		$user->setName ( 'UserName' );
 		$this->userGateway->save ( $user );
 	}
 

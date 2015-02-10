@@ -19,17 +19,17 @@ class InMemoryGatewayTest extends TestCase {
 		$entity2 = new Entity ();
 		$this->sut->save ( $entity2 );
 		
-		$this->assertNotEquals ( $entity1->id, $entity2->id );
+		$this->assertNotEquals ( $entity1->getId(), $entity2->getId() );
 	}
 
 	function testSaveDoesntChangeExistingId() {
 		$entity = new Entity ();
 		$this->sut->save ( $entity );
-		$expectedId = $entity->id;
+		$expectedId = $entity->getId();
 		
 		$this->sut->save ( $entity );
 		
-		$this->assertEquals ( $expectedId, $entity->id );
+		$this->assertEquals ( $expectedId, $entity->getId() );
 	}
 
 	function testSaveReturnsClonedEntity() {
@@ -37,7 +37,7 @@ class InMemoryGatewayTest extends TestCase {
 		
 		$clone = $this->sut->save ( $entity );
 		
-		$this->assertEquals ( $entity->id, $clone->id );
+		$this->assertEquals ( $entity->getId(), $clone->getId() );
 		$this->assertNotSame ( $entity, $clone );
 	}
 
@@ -64,7 +64,7 @@ class InMemoryGatewayTest extends TestCase {
 		$entity = new Entity ();
 		$this->sut->save ( $entity );
 		
-		$returnedEntity = $this->sut->get ( $entity->id );
+		$returnedEntity = $this->sut->get ( $entity->getId() );
 		
 		$this->assertTrue ( $entity->isSame ( $returnedEntity ) );
 	}

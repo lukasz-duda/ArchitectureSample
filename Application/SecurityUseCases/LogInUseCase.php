@@ -16,7 +16,7 @@ class LogInUseCase extends UseCase {
 			return;
 		}
 		
-		$invalidPassword = ! $this->passwordHash->verify ( $request->password, $user->passwordHash );
+		$invalidPassword = ! $this->passwordHash->verify ( $request->password, $user->getPasswordHash () );
 		if ($invalidPassword) {
 			$this->invalidPassword ( $responder );
 			return;

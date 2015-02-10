@@ -12,8 +12,8 @@ class DemoData {
 
 	static function addUsers() {
 		$user = new User ();
-		$user->name = 'User';
-		$user->passwordHash = password_hash ( 'Password', PASSWORD_DEFAULT );
+		$user->setName ( 'User' );
+		$user->setPasswordHash ( password_hash ( 'Password', PASSWORD_DEFAULT ) );
 		DemoUseCaseFactory::$userGateway->save ( $user );
 	}
 }

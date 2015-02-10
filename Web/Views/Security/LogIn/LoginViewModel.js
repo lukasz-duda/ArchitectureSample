@@ -4,8 +4,8 @@ LoginViewModel.constructor = LoginViewModel;
 function LoginViewModel() {
 	var me = this;
 
-	me.userName = ko.observable();
-	me.password = ko.observable();
+	me.userName = ko.observable(null);
+	me.password = ko.observable(null);
 
 	me.logIn = function() {
 		var args = {
